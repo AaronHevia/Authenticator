@@ -1,0 +1,13 @@
+E:\_MSSA\UserLogin\bin\Debug\netcoreapp3.1\UserLogin.exe
+E:\_MSSA\UserLogin\bin\Debug\netcoreapp3.1\UserLogin.deps.json
+E:\_MSSA\UserLogin\bin\Debug\netcoreapp3.1\UserLogin.runtimeconfig.json
+E:\_MSSA\UserLogin\bin\Debug\netcoreapp3.1\UserLogin.runtimeconfig.dev.json
+E:\_MSSA\UserLogin\bin\Debug\netcoreapp3.1\UserLogin.dll
+E:\_MSSA\UserLogin\bin\Debug\netcoreapp3.1\UserLogin.pdb
+E:\_MSSA\UserLogin\obj\Debug\netcoreapp3.1\UserLogin.csprojAssemblyReference.cache
+E:\_MSSA\UserLogin\obj\Debug\netcoreapp3.1\UserLogin.AssemblyInfoInputs.cache
+E:\_MSSA\UserLogin\obj\Debug\netcoreapp3.1\UserLogin.AssemblyInfo.cs
+E:\_MSSA\UserLogin\obj\Debug\netcoreapp3.1\UserLogin.csproj.CoreCompileInputs.cache
+E:\_MSSA\UserLogin\obj\Debug\netcoreapp3.1\UserLogin.dll
+E:\_MSSA\UserLogin\obj\Debug\netcoreapp3.1\UserLogin.pdb
+E:\_MSSA\UserLogin\obj\Debug\netcoreapp3.1\UserLogin.genruntimeconfig.cache
