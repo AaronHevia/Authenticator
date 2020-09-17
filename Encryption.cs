@@ -22,6 +22,18 @@ namespace UserLogin
 
         private readonly string[] characters = {"!", "@", "#", "$", "%", "&", "*", "(", ")", "_", "-", "=", "+"};
 
+        public string Encrypt(string password)
+        {
+            int i = 0;
 
+            foreach (char c in password)
+            {
+                i++;
+                char encrypted = (char)(c * i);
+                password += encrypted.ToString();
+            }
+
+            return password;
+        }
     }
 }

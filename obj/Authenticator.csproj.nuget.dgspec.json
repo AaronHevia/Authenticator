@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\_MSSA\\UserLogin\\Authenticator.csproj": {}
+    "E:\\_GitHub\\Authenticator\\Authenticator.csproj": {}
   },
   "projects": {
-    "E:\\_MSSA\\UserLogin\\Authenticator.csproj": {
+    "E:\\_GitHub\\Authenticator\\Authenticator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\_MSSA\\UserLogin\\Authenticator.csproj",
+        "projectUniqueName": "E:\\_GitHub\\Authenticator\\Authenticator.csproj",
         "projectName": "Authenticator",
-        "projectPath": "E:\\_MSSA\\UserLogin\\Authenticator.csproj",
+        "projectPath": "E:\\_GitHub\\Authenticator\\Authenticator.csproj",
         "packagesPath": "C:\\Users\\Aaron\\.nuget\\packages\\",
-        "outputPath": "E:\\_MSSA\\UserLogin\\obj\\",
+        "outputPath": "E:\\_GitHub\\Authenticator\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "E:\\Microsoft\\Xamarin\\NuGet\\"
