@@ -5,8 +5,6 @@ namespace Authenticator
 {
     class Establish
     {
-        Sequence sequence = new Sequence();
-
         private readonly char[] lowerCased =
         {
             'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
@@ -50,16 +48,10 @@ namespace Authenticator
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("--------------------------------------------------------------------");
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write("\nPress <ENTER> to Cancel Registration\t\t--OR--\n\nEnter a Password to register and press <ENTER>:  ");
+            Console.Write("\nEnter a Password to register and press <ENTER>:  ");
             Console.ForegroundColor = ConsoleColor.White;
             input = Console.ReadLine();
-
-            if (input == "")
-            {
-                sequence.Run();
-            }
-            else
-            {
+            
                 while (input.Length < 7)
                 {
                     Console.Clear();
@@ -73,7 +65,6 @@ namespace Authenticator
                     Password();
                     input = Console.ReadLine();
                 }
-            }
             
             foreach (var c in input)
             {

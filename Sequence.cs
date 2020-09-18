@@ -23,6 +23,9 @@ namespace Authenticator
 
         public void Run()
         {
+            //Reset validUser for additional registering.
+            validUser = false;
+
             //Run Menu
             menu.Display();
             input = Console.ReadLine();
@@ -79,18 +82,17 @@ namespace Authenticator
                     break;
                 case 2 :
                     //Authenticate
+                    Console.Clear();
                     authenticate.UserName();
                     input = Console.ReadLine();
 
                     if (input == "")
                     {
+                        Console.Clear();
                         Run();
                     }
-                    else
-                    {
-                        AuthenticateUser(input);
-                    }
 
+                    AuthenticateUser(input);
                     authenticate.Password();
                     input = Console.ReadLine();
                     password = encryption.Encrypt(input);
@@ -108,6 +110,7 @@ namespace Authenticator
                         Console.WriteLine($"Username:  {userName}");
                         Console.WriteLine($"Password:  {input}");
                         Console.WriteLine($"Encrypted Password:  {password}");
+                        Run();
                     }
                     else
                     {
@@ -116,8 +119,7 @@ namespace Authenticator
                         Console.Write("Invalid password.  Please try again.\n");
                         Run();
                     }
-
-                    break ;
+                    break;
                 case 3 :
                     //Exit
                     Environment.Exit(0);
@@ -127,50 +129,59 @@ namespace Authenticator
             //Check if username exists prior to getting password.
             void AuthenticateUser(string input)
             {
+                bool match = false;
+
                 for (int i = 0; i < users.Count; i++)
                 {
-                    var match = input == users[i].UserName;
+                    match = input == users[i].UserName;
 
                     if (match)
                     {
                         element = i;
                         userName = input;
                     }
-                    else
-                    {
-                        Console.Clear();
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.Write("Username does not exist.  Please try again.\n");
-                        Run();
-                    }
+                }
+
+                if(!match)
+                {
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write("Username does not exist.  Please try again.\n");
+                    Run();
                 }
             }
 
             //Check if username exists prior to registering.
             void RegistryCheckList(string input)
             {
-                int count = -1;
-
-                foreach (var user in users)
+                while (!validUser)
                 {
-                    if (user.UserName.Contains(input))
+                    int count = -1;
+
+                    foreach (var user in users)
                     {
-                        count++;
+                        if (user.UserName.Contains(input))
+                        {
+                            count++;
+                        }
                     }
-                }
 
-                count++;
+                    count++;
 
-                if (count == 0)
-                {
-                    userName = input;
-                }
-                else if (count > 0)
-                {
-                    Console.Clear();
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write("Username already exists.  Please try again.\n");
-                    establish.UserName();
+                    if (count == 0)
+                    {
+                        userName = input;
+                        validUser = true;
+                    }
+                    else if (count > 0)
+                    {
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write("Username already exists.  Please try again.\n\n");
+                        establish.UserName();
+                        input = Console.ReadLine();
+                        RegistryCheckList(input);
+                    }
                 }
             }
         }

@@ -4,8 +4,6 @@ namespace Authenticator
 {
     class Authenticate
     {
-        Sequence sequence = new Sequence();
-
         public void UserName()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
