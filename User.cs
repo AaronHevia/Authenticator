@@ -1,4 +1,4 @@
-﻿namespace UserLogin
+﻿namespace Authenticator
 {
     public class User
     {

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace UserLogin
+namespace Authenticator
 {
-    class Login
+    class Authenticate
     {
         /// Login
         ///     Check if list contains userName

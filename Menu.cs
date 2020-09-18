@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UserLogin
+namespace Authenticator
 {
     public class Menu
     {

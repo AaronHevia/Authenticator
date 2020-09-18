@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace UserLogin
+namespace Authenticator
 {
     public class Sequence
     {
         Menu menu = new Menu();
-        Login login = new Login();
+        Authenticate authenticate = new Authenticate();
         Establish establish = new Establish();
+        Encryption encryption = new Encryption();
         List<User> users = new List<User>();
 
         private string input;
@@ -15,8 +16,6 @@ namespace UserLogin
         private string password;
 
         private int choice;
-
-        private bool storeUserName;
 
         public void Run()
         {
@@ -37,34 +36,48 @@ namespace UserLogin
             {
                 case 1 :
                     //Establish Account
-                    establish.AskForUserName();
+                    Console.Clear();
+                    establish.UserName();
                     input = Console.ReadLine();
 
-                    while (input.Length < 5)
+                    if (input == "")
                     {
                         Console.Clear();
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.Write("Username must be (6) characters or more.  Please try again.\n");
-                        establish.AskForUserName();
-                        input = Console.ReadLine();
+                        Run();
+                    }
+                    else
+                    {
+                        while (input.Length < 5)
+                        {
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write("Username must be (6) characters or more.  Please try again.\n");
+                            establish.UserName();
+                            input = Console.ReadLine();
+                        }
                     }
 
                     // Check if list contains userName
                     RegistryCheckList(input);
 
                     //Ask and Confirm Password
+                    password = establish.Password();
 
                     //Encrypt Password
-                    //Add User
-                    AddUser(userName, password);
+                    password = encryption.Encrypt(password);
+
+                    //Add User to List
+                    users.Add(new User(userName, password));
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("Username and Password Authenticated.");
+                    Console.WriteLine("Username and Password Established.");
                     Run();
                     break;
                 case 2 :
                     //Authenticate
+
                     
+
                     break ;
                 case 3 :
                     //Exit
@@ -72,12 +85,14 @@ namespace UserLogin
                 break;
             }
 
+            //Check if username exists prior to registering.
             void RegistryCheckList(string input)
             {
                 int count = -1;
-                foreach (var u in users)
+
+                foreach (var user in users)
                 {
-                    if (u.UserName.Contains(input))
+                    if (user.UserName.Contains(input))
                     {
                         count++;
                     }
@@ -94,17 +109,9 @@ namespace UserLogin
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.Write("Username already exists.  Please try again.\n");
-                    establish.AskForUserName();
+                    establish.UserName();
                 }
             }
-
-            // Add user to list
-            void AddUser(string userName, string password)
-            {
-                users.Add(new User(userName, password));
-            }
-
-            ///     Return to Menu
         }
     }
 }

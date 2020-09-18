@@ -1,0 +1,13 @@
+E:\_GitHub\Authenticator\bin\Debug\netcoreapp3.1\Authenticator.exe
+E:\_GitHub\Authenticator\bin\Debug\netcoreapp3.1\Authenticator.deps.json
+E:\_GitHub\Authenticator\bin\Debug\netcoreapp3.1\Authenticator.runtimeconfig.json
+E:\_GitHub\Authenticator\bin\Debug\netcoreapp3.1\Authenticator.runtimeconfig.dev.json
+E:\_GitHub\Authenticator\bin\Debug\netcoreapp3.1\Authenticator.dll
+E:\_GitHub\Authenticator\bin\Debug\netcoreapp3.1\Authenticator.pdb
+E:\_GitHub\Authenticator\obj\Debug\netcoreapp3.1\Authenticator.csprojAssemblyReference.cache
+E:\_GitHub\Authenticator\obj\Debug\netcoreapp3.1\Authenticator.AssemblyInfoInputs.cache
+E:\_GitHub\Authenticator\obj\Debug\netcoreapp3.1\Authenticator.AssemblyInfo.cs
+E:\_GitHub\Authenticator\obj\Debug\netcoreapp3.1\Authenticator.csproj.CoreCompileInputs.cache
+E:\_GitHub\Authenticator\obj\Debug\netcoreapp3.1\Authenticator.dll
+E:\_GitHub\Authenticator\obj\Debug\netcoreapp3.1\Authenticator.pdb
+E:\_GitHub\Authenticator\obj\Debug\netcoreapp3.1\Authenticator.genruntimeconfig.cache
