@@ -3,19 +3,23 @@ using System.Collections.Generic;
 
 namespace Authenticator
 {
-    public class Sequence
+    class Sequence
     {
+        public static List<User> users = new List<User>();
+
         Menu menu = new Menu();
         Authenticate authenticate = new Authenticate();
         Establish establish = new Establish();
         Encryption encryption = new Encryption();
-        List<User> users = new List<User>();
 
         private string input;
         private string userName;
         private string password;
 
         private int choice;
+        private int element;
+
+        private bool validUser;
 
         public void Run()
         {
@@ -75,14 +79,71 @@ namespace Authenticator
                     break;
                 case 2 :
                     //Authenticate
+                    authenticate.UserName();
+                    input = Console.ReadLine();
 
-                    
+                    if (input == "")
+                    {
+                        Run();
+                    }
+                    else
+                    {
+                        AuthenticateUser(input);
+                    }
+
+                    authenticate.Password();
+                    input = Console.ReadLine();
+                    password = encryption.Encrypt(input);
+
+                    if (password == users[element].Password)
+                    {
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("--------------------------------------------------------------------");
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.WriteLine("\t\t\tAUTHENTICATION COMPLETE");
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("--------------------------------------------------------------------");
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine($"Username:  {userName}");
+                        Console.WriteLine($"Password:  {input}");
+                        Console.WriteLine($"Encrypted Password:  {password}");
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write("Invalid password.  Please try again.\n");
+                        Run();
+                    }
 
                     break ;
                 case 3 :
                     //Exit
                     Environment.Exit(0);
                 break;
+            }
+
+            //Check if username exists prior to getting password.
+            void AuthenticateUser(string input)
+            {
+                for (int i = 0; i < users.Count; i++)
+                {
+                    var match = input == users[i].UserName;
+
+                    if (match)
+                    {
+                        element = i;
+                        userName = input;
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write("Username does not exist.  Please try again.\n");
+                        Run();
+                    }
+                }
             }
 
             //Check if username exists prior to registering.

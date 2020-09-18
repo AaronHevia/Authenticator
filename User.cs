@@ -1,6 +1,6 @@
 ﻿namespace Authenticator
 {
-    public class User
+    class User
     {
         public string UserName { get; set; }
         public string Password { get; set; }

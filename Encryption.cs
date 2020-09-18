@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Authenticator
+﻿namespace Authenticator
 {
     class Encryption
     {

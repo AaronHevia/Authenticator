@@ -3,8 +3,10 @@ using System.Linq;
 
 namespace Authenticator
 {
-    public class Establish
+    class Establish
     {
+        Sequence sequence = new Sequence();
+
         private readonly char[] lowerCased =
         {
             'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
@@ -48,24 +50,31 @@ namespace Authenticator
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("--------------------------------------------------------------------");
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write("\nPress <ENTER> to Cancel Registration\t\t--OR--\n\nEnter a Password to register and press <ENTER> to begin registering:  ");
+            Console.Write("\nPress <ENTER> to Cancel Registration\t\t--OR--\n\nEnter a Password to register and press <ENTER>:  ");
             Console.ForegroundColor = ConsoleColor.White;
             input = Console.ReadLine();
 
-            while (input.Length < 7)
+            if (input == "")
             {
-                Console.Clear();
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write("Password must be (8) characters or more and contain (2) of the following:" +
-                              "\n (2) lower-cased letters." +
-                              "\n (2) upper-cased letters." +
-                              "\n (2) numbers." +
-                              "\n (2) characters (! , @ , # , $ , % , & , * , ( , ) , _ , - , = , +)" +
-                              "\nPlease try again.\n");
-                Password();
-                input = Console.ReadLine();
+                sequence.Run();
             }
-
+            else
+            {
+                while (input.Length < 7)
+                {
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write("Password must be (8) characters or more and contain (2) of the following:" +
+                                  "\n (2) lower-cased letters." +
+                                  "\n (2) upper-cased letters." +
+                                  "\n (2) numbers." +
+                                  "\n (2) characters (! , @ , # , $ , % , & , * , ( , ) , _ , - , = , +)" +
+                                  "\nPlease try again.\n");
+                    Password();
+                    input = Console.ReadLine();
+                }
+            }
+            
             foreach (var c in input)
             {
                 if (lowerCased.Contains(c))

@@ -2,7 +2,7 @@
 
 namespace Authenticator
 {
-    public class Menu
+    class Menu
     {
         public void Display()
         {
